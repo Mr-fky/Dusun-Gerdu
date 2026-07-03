@@ -215,7 +215,14 @@ section {
   box-shadow: var(--shadow-lg);
 }
 
-/* --- DAN GANTI MENJADI SEPERTI INI --- */
+/* === PERBAIKAN DI SINI: Ukuran kotak pembungkus foto agar pas di laptop === */
+.wisata-v-img {
+  position: relative;
+  flex: 0 0 220px;                /* Mengunci lebar ruang foto di kiri sebesar 220px */
+  overflow: hidden;
+}
+
+/* Lencana Wisata (Badge) di Atas Gambar */
 .wisata-v-img .card-badge {
   position: absolute;
   top: 15px;
@@ -229,7 +236,7 @@ section {
   border-radius: 30px;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  box-shadow: var(--shadow-sm);
 }
 
 .wisata-v-img img {
@@ -237,14 +244,6 @@ section {
   height: 100%;
   object-fit: cover;
   transition: var(--transition);
-}
-
-.wisata-v-img .card-badge {
-  position: absolute;
-  top: 15px;
-  left: 15px;
-  z-index: 2;
-  box-shadow: var(--shadow-sm);
 }
 
 .wisata-v-info {
@@ -326,11 +325,13 @@ section {
   }
   .wisata-v-img {
     height: 200px;
+    flex: unset;           /* Melepas kuncian lebar agar foto memenuhi bagian atas kartu HP */
   }
   .wisata-v-info {
     padding: 20px;
   }
 }
+
 /* ==========================================================================
    [SEKSI 03] STYLE: GALERI DESA (SCROLL HORIZONTAL)
    ========================================================================== */
@@ -339,6 +340,7 @@ section {
   background-color: #f8fafc; /* Latar belakang abu-abu sangat muda agar foto kontras */
 }
 
+/* === PERBAIKAN DI SINI: Ditambahkan tabindex="0" via HTML disarankan untuk akses keyboard === */
 .scroll-container {
   display: flex;
   gap: 25px;
@@ -390,12 +392,6 @@ section {
 }
 
 /* ==========================================================================
-   END OF STYLE: GALERI DESA
-   ========================================================================== */
-
-
-
-//* ==========================================================================
    [SEKSI 04] STYLE: PRODUK UNGGULAN UMKM (KATALOG SCROLL HORIZONTAL DI HP)
    ========================================================================== */
 #umkm {
@@ -546,10 +542,8 @@ section {
 }
 
 /* ==========================================================================
-   MEDIA QUERIES (Kembalikan ke Grid Normal untuk Layar Lebar)
+   MEDIA QUERIES UMKM (Kembalikan ke Grid Normal untuk Layar Lebar)
    ========================================================================== */
-
-/* Layar Tablet (Minimal Lebar 600px) -> Matikan scroll horizontal, ubah jadi 3 Kolom Grid */
 @media (min-width: 600px) {
   .umkm-market-grid {
     display: grid;                 /* Kembalikan ke grid */
@@ -688,7 +682,7 @@ footer p:last-child {
 }
 
 /* ==========================================================================
-   RESPONSIF MOBILE (PROPERTI REDUNDAN DIHAPUS SUPAYA ANIMASI RINGAN)
+   RESPONSIF MOBILE GLOBAL
    ========================================================================== */
 @media (max-width: 768px) {
   header {
